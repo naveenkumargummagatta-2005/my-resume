@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naveen Kumar Gummagatta | Frontend Developer</title>
+  <meta name="description" content="Portfolio of Naveen Kumar Gummagatta — B.Tech CS, Frontend Developer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f0f4ff;
+      --surface: #ffffff;
+      --border: rgba(99,102,241,0.15);
+      --border-strong: rgba(99,102,241,0.35);
+      --text: #0f0e2e;
+      --text-muted: #4b4b6b;
+      --text-faint: #9090b0;
+
+      /* Accent — Indigo */
+      --accent: #4f46e5;
+      --accent-bg: #eef2ff;
+      --accent-text: #3730a3;
+
+      /* Hero gradient */
+      --hero-grad: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a21caf 100%);
+
+      /* Section accent colours */
+      --cyan: #0891b2;
+      --cyan-bg: #ecfeff;
+      --cyan-text: #164e63;
+
+      --rose: #e11d48;
+      --rose-bg: #fff1f2;
+      --rose-text: #881337;
+
+      --violet: #7c3aed;
+      --violet-bg: #f5f3ff;
+      --violet-text: #4c1d95;
+
+      --orange: #ea580c;
+      --orange-bg: #fff7ed;
+      --orange-text: #7c2d12;
+
+      --green: #059669;
+      --green-bg: #ecfdf5;
+      --green-text: #064e3b;
+
+      --amber: #d97706;
+      --amber-bg: #fffbeb;
+      --amber-text: #78350f;
+
+      --sky: #0284c7;
+      --sky-bg: #e0f2fe;
+      --sky-text: #0c4a6e;
+
+      --dot: #4f46e5;
+      --radius: 16px;
+      --radius-sm: 10px;
+
+      /* Section heading accent line colours */
+      --sec-obj: #4f46e5;
+      --sec-skill: #7c3aed;
+      --sec-edu: #0891b2;
+      --sec-proj: #e11d48;
+      --sec-ach: #059669;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(99,102,241,0.12);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      background: var(--hero-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { background: var(--accent-bg); color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    .page { max-width: 920px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--hero-grad);
+      border-radius: var(--radius);
+      padding: 2.8rem 2.8rem 2.2rem;
+      margin-bottom: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+      animation: fadeUp 0.55s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      top: -80px; right: -60px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      bottom: -60px; left: 40px;
+      pointer-events: none;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+    .hero-title {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.6rem;
+    }
+    .contact-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.12);
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .contact-item a { color: #ffffff; text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+    .contact-item svg { width: 14px; height: 14px; flex-shrink: 0; stroke: currentColor; }
+    .avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      border: 3px solid rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .card-full {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+    @media (max-width: 640px) {
+      .grid2 { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; padding: 1.8rem; }
+      .hero-name { font-size: 28px; }
+      .avatar { display: none; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 0.5rem; }
+      .nav-links a { padding: 4px 7px; font-size: 12px; }
+      .page { padding: 1.5rem 1rem 3rem; }
+      .ach-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label span {
+      padding: 3px 12px;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; }
+
+    /* Per-section accent colours */
+    .lbl-obj span { background: #4f46e5; }
+    .lbl-obj::after { background: linear-gradient(90deg,#c7d2fe,transparent); }
+
+    .lbl-skill span { background: #7c3aed; }
+    .lbl-skill::after { background: linear-gradient(90deg,#ddd6fe,transparent); }
+
+    .lbl-edu span { background: #0891b2; }
+    .lbl-edu::after { background: linear-gradient(90deg,#cffafe,transparent); }
+
+    .lbl-proj span { background: #e11d48; }
+    .lbl-proj::after { background: linear-gradient(90deg,#fecdd3,transparent); }
+
+    .lbl-ach span { background: #059669; }
+    .lbl-ach::after { background: linear-gradient(90deg,#d1fae5,transparent); }
+
+    /* ── OBJECTIVE ── */
+    .objective-text {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: var(--text-muted);
+      border-left: 3px solid #4f46e5;
+      padding-left: 1rem;
+      border-radius: 0 4px 4px 0;
+      background: var(--accent-bg);
+      padding: 1rem 1.2rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    /* ── SKILLS ── */
+    .skill-group { margin-bottom: 1.1rem; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-cat {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-faint);
+      margin-bottom: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 12px;
+      padding: 4px 13px;
+      border-radius: 20px;
+      font-weight: 500;
+      border: 1px solid transparent;
+    }
+    .t-indigo  { background: #eef2ff; color: #3730a3; border-color: #c7d2fe; }
+    .t-violet  { background: #f5f3ff; color: #4c1d95; border-color: #ddd6fe; }
+    .t-cyan    { background: #ecfeff; color: #164e63; border-color: #a5f3fc; }
+    .t-orange  { background: #fff7ed; color: #7c2d12; border-color: #fed7aa; }
+    .t-sky     { background: #e0f2fe; color: #0c4a6e; border-color: #bae6fd; }
+    .t-rose    { background: #fff1f2; color: #881337; border-color: #fecdd3; }
+    .t-green   { background: #ecfdf5; color: #064e3b; border-color: #a7f3d0; }
+    .t-amber   { background: #fffbeb; color: #78350f; border-color: #fde68a; }
+
+    /* ── EDUCATION ── */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0.95rem 0;
+      border-bottom: 1px solid rgba(99,102,241,0.1);
+    }
+    .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .edu-item:first-child { padding-top: 0; }
+    .edu-degree { font-size: 14px; font-weight: 600; margin-bottom: 3px; color: var(--text); }
+    .edu-school { font-size: 13px; color: var(--text-muted); }
+    .edu-meta { text-align: right; flex-shrink: 0; margin-left: 1rem; }
+    .edu-year { font-size: 12px; color: var(--text-faint); }
+    .edu-grade {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg,#059669,#0891b2);
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-top: 4px;
+      display: inline-block;
+    }
+
+    /* ── PROJECTS ── */
+    .project-card {
+      border: 1px solid rgba(225,29,72,0.15);
+      border-radius: var(--radius-sm);
+      padding: 1.3rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s, transform 0.15s;
+      background: #fff;
+      border-left: 4px solid #e11d48;
+    }
+    .project-card:last-child { margin-bottom: 0; }
+    .project-card:hover { border-color: #e11d48; transform: translateY(-2px); }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+    .project-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .project-tech {
+      font-size: 12px;
+      color: #e11d48;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+    .project-link {
+      font-size: 12px;
+      color: #fff;
+      background: #1a1a2e;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .project-link:hover { background: #4f46e5; }
+    .project-link svg { width: 13px; height: 13px; stroke: currentColor; }
+    .project-points { list-style: none; margin-top: 0.8rem; }
+    .project-points li {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 5px;
+    }
+    .project-points li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #e11d48;
+      font-size: 11px;
+      top: 2px;
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .ach-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      background: var(--green-bg);
+      border: 1px solid #a7f3d0;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+    }
+    .ach-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#059669,#0891b2);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--text-faint);
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card-full, .grid2 > .card { animation: fadeUp 0.5s ease both; }
+    .card-full:nth-of-type(1) { animation-delay: 0.05s; }
+    .card-full:nth-of-type(2) { animation-delay: 0.1s; }
+    .card-full:nth-of-type(3) { animation-delay: 0.15s; }
+    .card-full:nth-of-type(4) { animation-delay: 0.2s; }
+    .grid2 > .card:nth-child(1) { animation-delay: 0.1s; }
+    .grid2 > .card:nth-child(2) { animation-delay: 0.15s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Naveen Kumar</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+  </ul>
+</nav>
+
+<main class="page">
+
+  <!-- HERO -->
+  <section id="about" class="hero">
+    <div>
+      <h1 class="hero-name">Naveen Kumar<br>Gummagatta</h1>
+      <p class="hero-title">B.Tech Computer Science &nbsp;·&nbsp; Frontend Developer &nbsp;·&nbsp; Fresher</p>
+      <div class="contact-row">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:naveenkumargummagatta@gmail.com">naveenkumargummagatta@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91-9347815799
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/in/naveengummagatta" target="_blank" rel="noopener">linkedin.com/in/naveengummagatta</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <a href="https://github.com/naveenkumargummagatta-2005" target="_blank" rel="noopener">github.com/naveenkumargummagatta-2005</a>
+        </div>
+      </div>
+    </div>
+    <div class="avatar" aria-hidden="true">NG</div>
+  </section>
+
+  <!-- OBJECTIVE -->
+  <div class="card-full">
+    <div class="section-label lbl-obj"><span>Objective</span></div>
+    <p class="objective-text">
+      Enthusiastic Computer Science graduate with hands-on experience in frontend technologies including HTML, CSS, and JavaScript. Passionate about building clean, responsive, and user-friendly web interfaces. Eager to join a forward-thinking organisation as a Frontend Developer and contribute to meaningful digital products.
+    </p>
+  </div>
+
+  <!-- SKILLS + EDUCATION -->
+  <div class="grid2">
+    <div id="skills" class="card">
+      <div class="section-label lbl-skill"><span>Technical Skills</span></div>
+      <div class="skill-group">
+        <div class="skill-cat">Frontend</div>
+        <div class="skill-tags">
+          <span class="tag t-indigo">HTML5</span>
+          <span class="tag t-indigo">CSS3</span>
+          <span class="tag t-indigo">JavaScript</span>
+          <span class="tag t-indigo">Responsive Design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Programming</div>
+        <div class="skill-tags">
+          <span class="tag t-violet">Java</span>
+          <span class="tag t-violet">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Cloud &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="tag t-orange">AWS</span>
+          <span class="tag t-sky">Git</span>
+          <span class="tag t-sky">GitHub</span>
+          <span class="tag t-sky">VS Code</span>
+          <span class="tag t-sky">Chrome DevTools</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">CS Fundamentals</div>
+        <div class="skill-tags">
+          <span class="tag t-cyan">OOP</span>
+          <span class="tag t-cyan">DSA</span>
+          <span class="tag t-cyan">DBMS</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="education" class="card">
+      <div class="section-label lbl-edu"><span>Education</span></div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">B.Tech — CS &amp; Engineering</div>
+          <div class="edu-school">Sri Venkateshwara College of Engineering, Tirupati</div>
+        </div>
+        <div class="edu-meta">
+          <div class="edu-year">2023 – 2027</div>
+          <div class="edu-grade">8.1 / 10</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">Intermediate (MPC)</div>
+          <div class="edu-school">Vidhyanidhi Junior College</div>
+        </div>
+        <div class="edu-meta">
+          <div class="edu-year">2021 – 2023</div>
+          <div class="edu-grade">85.3%</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">SSC</div>
+          <div class="edu-school">MJPAPBCWREIS, Andhra Pradesh</div>
+        </div>
+        <div class="edu-meta">
+          <div class="edu-year">2020 – 2021</div>
+          <div class="edu-grade">92%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="projects" class="card-full">
+    <div class="section-label lbl-proj"><span>Projects</span></div>
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-name">To-Do List Web Application</div>
+          <div class="project-tech">HTML5 · CSS3 · JavaScript</div>
+        </div>
+        <a class="project-link" href="https://github.com/naveenkumargummagatta-2005" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+      <ul class="project-points">
+        <li>Built a fully responsive To-Do List app with add, edit, mark complete, and delete functionality.</li>
+        <li>Implemented local storage to persist tasks across browser sessions without any backend.</li>
+        <li>Designed a clean, intuitive UI with CSS animations and a colour-coded priority system (High / Medium / Low).</li>
+        <li>Applied DOM manipulation and event-driven programming using vanilla JavaScript.</li>
+        <li>Ensured cross-browser compatibility and mobile responsiveness using CSS Flexbox and media queries.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div id="achievements" class="card-full">
+    <div class="section-label lbl-ach"><span>Achievements &amp; Activities</span></div>
+    <div class="ach-grid">
+      <div class="ach-item"><div class="ach-dot"></div><span>Scored 92% in Class X and 85.3% in Intermediate — consistently strong academic record.</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>Completed Responsive Web Design Certification from freeCodeCamp.</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>Completed Java Programming Basics course on NPTEL / Coursera.</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>Solved 30+ problems on LeetCode — strengthening DSA and problem-solving skills.</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>Active participant in college-level coding contests and tech fests.</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>Strong problem-solving skills with core Java data structures knowledge.</span></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Naveen Kumar Gummagatta &nbsp;·&nbsp; <a href="mailto:naveenkumargummagatta@gmail.com">naveenkumargummagatta@gmail.com</a> &nbsp;·&nbsp; Built with HTML &amp; CSS</p>
+</footer>
+
+</body>
+</html>
